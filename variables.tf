@@ -139,12 +139,3 @@ variable "instance_market_options" {
 
   default = null
 }
-
-variable "tags" {
-  type = map(string)
-}
-
-variable "sleep_tags" {
-  type = map(string)
-}
-

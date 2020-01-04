@@ -86,18 +86,6 @@ resource "aws_launch_template" "this" {
     }
   }
 
-  tag_specifications {
-    resource_type = "volume"
-    tags = var.tags
-  }
-
-  tag_specifications {
-    resource_type = "instance"
-    tags = local.merged_tags
-  }
-
-  tags = var.tags
-
   lifecycle {
     create_before_destroy = true
   }
@@ -117,14 +105,5 @@ resource "aws_autoscaling_group" "this" {
     id = join("", aws_launch_template.this.*.id)
     version = var.launch_template_version != "" ? var.launch_template_version : join("", aws_launch_template.this.*.latest_version)
   }
-
-  tags = flatten([
-    for key in keys(local.merged_tags) :
-    {
-      key = key
-      value = local.merged_tags[key]
-      propagate_at_launch = true
-    }
-  ])
 
 }
