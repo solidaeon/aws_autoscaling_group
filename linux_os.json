@@ -1,0 +1,14 @@
+{
+  "amazon": {
+    "ami_filter": "amzn2-ami-hvm-2.0*",
+    "owners": [
+      "137112412989"
+    ]
+  },
+  "bionic": {
+    "ami_filter": "ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server*",
+    "owners": [
+      "099720109477"
+    ]
+  }
+}
